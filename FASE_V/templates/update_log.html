@@ -1,0 +1,24 @@
+{% extends "master.html" %}
+{% block titulo %}
+Update Log
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Update log</h3>
+            <form action="{{url_for('update_log')}}" method="post">
+                <input type="hidden" name="id" value="{{log[4]}}">
+                <label for="host">host:</label>
+                <input value="{{log[0]}}" required type="text" class="input" placeholder="host" name="host" id="host">
+                <label for="port">port</label>
+                <input value="{{log[1]}}" required type="text" class="input" placeholder="port" name="port" id="port">
+                <label for="status">status</label>
+                <input value="{{log[2]}}" required type="text" class="input" placeholder="status" name="status" id="status">
+                <button type="submit" class="button is-success mt-2">Send</button>
+                <a href="{{url_for('logs')}}" class="button is-primary mt-2">Return</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
