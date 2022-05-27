@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3600" >
+    <title>CRUD FLASK{% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+
+</head>
+<body>
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h1 class="is-size-3">Logs</h3>
+            <a href="{{url_for('create_data_log')}}" class="button is-success">CREATE DATA</a>
+            <a href="{{url_for('delete_data_log')}}" class="button is-danger">DESTROY TABLE!</a>
+            <a href="{{url_for('form_put_log')}}" class="button is-success">PUT DATA<a>
+                <a href="{{url_for('telegram_log')}}" class="button is-info">SEND TELEGRAM TABLE<a></a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>host</th>
+                        <th>port</th>
+                        <th>status</th>
+                        <th>time</th>
+                        <th>edit</th>
+                        <th>delete</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{log[4]}}</td>
+                        <td>{{log[0]}}</td>
+                        <td>{{log[1]}}</td>
+                        <td>{{log[2]}}</td>
+                        <td>{{log[3]}}</td>
+                        <td>
+                            <a href="{{url_for('edit_log', id=log[4])}}" class="button is-info">Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{url_for('delete_log')}}" method="POST">
+                                <input type="hidden" name="id" value="{{log[4]}}">
+                                <button class="button is-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html> 
