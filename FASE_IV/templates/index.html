@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>For loop in Flask</title>
+</head>
+
+<style type="text/css">
+	
+	th:tr{
+		color: blue;
+
+	}
+	tr:nth-of-type(2n){
+		border: 1px solid black;
+		background-color: rgba(150, 150, 150, 0.5);
+
+	}
+
+	td{
+		padding: 8px 8px;
+		border: 1px solid black;
+	}
+</style>
+
+<body>
+
+<table style="margin-left: 20px;">
+	<th>
+		<tr style="color: black; ">	
+		<td>HOST</td>
+		<td>PORT</td>
+		<td>STATUS</td>
+		<td>TIME</td>
+
+</tr>
+	</th>
+	
+{%for port in hostports%}
+    {%for hosts in hostserver%}
+        {%if servertest(hosts,port)%}
+		<tr>
+			<td>{{hosts}}</td>
+			<td>{{port}}</td>
+			<td>OK</td>
+			<td>{{time}}</td>
+			
+		</tr>
+		{%else%}
+		<tr>
+			<td>{{hosts}}</td>
+			<td>{{port}}</td>
+			<td>NOT OK</td>
+			<td>{{time}}</td>
+		</tr>
+        {% endif %}
+    {%endfor%}
+{%endfor%}
+
+</table>
+</body>
+</html>
