@@ -1,0 +1,23 @@
+{% extends "master.html" %}
+{% block titulo %}
+Put log
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column is-one-third">
+            <h3 class="is-size-3">put log</h3>
+            <form action="{{url_for('save_log')}}" method="post">
+                <label for="host">host:</label>
+                <input required type="text" class="input" placeholder="host" name="host" id="host">
+                <label for="port">port</label>
+                <input required type="text" class="input" placeholder="port" name="port" id="port">
+                <label for="status">status</label>
+                <input required type="text" class="input" placeholder="status" name="status" id="status">
+                <button type="submit" class="button is-success mt-2">Send</button>
+                <a href="{{url_for('logs')}}" class="button is-primary mt-2">Return</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
